@@ -1,26 +1,18 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "app.py",
-      "use": "@vercel/python",
-      "config": {
-        "maxLambdaSize": "15mb"
-      }
+  "functions": {
+    "api/app.py": {
+      "memory": 1024,
+      "maxDuration": 10
     }
-  ],
+  },
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "app.py"
+      "dest": "api/app.py"
     }
   ],
   "env": {
     "PYTHONPATH": "."
-  },
-  "functions": {
-    "app.py": {
-      "memory": 1024
-    }
   }
 }
